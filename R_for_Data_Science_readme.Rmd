@@ -1,0 +1,29 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+
+```{r}
+Sys.setenv(LANGUAGE = "en")
+install.packages("tidyverse")
+install.packages(c("nycflights13", "gapminder", "Lahman"))
+library(nycflights13)
+library("tidyverse")
+#devtools::install_github("hadley/r4ds")
+devtools::session_info(c("tidyverse"))
+```
+
+If we need to be explicit about where a function (or dataset) comes from, we’ll use the special form package::function(). For example, ggplot2::ggplot() tells you explicitly that we’re using the ggplot() function from the ggplot2 package.
+
+Take careful note of the conflicts message that’s printed when you load the tidyverse. It tells you that dplyr overwrites some functions in base R. If you want to use the base version of these functions after loading dplyr, you’ll need to use their full names: stats::filter() and stats::lag().
+
+I recommend that you always start your script with the packages that you need. That way, if you share your code with others, they can easily see what packages they need to install. Note, however, that you should never include install.packages() or setwd() in a script that you share. It’s very antisocial to change settings on someone else’s computer!
+
+To foster this behaviour, I highly recommend that you instruct RStudio not to preserve your workspace between sessions
+
+Press Cmd/Ctrl + Shift + F10 to restart RStudio.
+Press Cmd/Ctrl + Shift + S to rerun the current script.
+
+R experts keep all the files associated with a project together — input data, R scripts, analytical results, figures. This is such a wise and common practice that RStudio has built-in support for this via projects.
